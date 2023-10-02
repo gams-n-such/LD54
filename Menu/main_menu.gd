@@ -2,8 +2,11 @@ extends Control
 
 @export var default_level : GameLevel
 
-func _ready():
+func _enter_tree():
 	Game.apply_level_data(default_level)
+	return
+
+func _ready():
 	%GameTextBox.text = Game.game_text
 	return
 
