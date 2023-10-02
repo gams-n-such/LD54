@@ -35,6 +35,8 @@ func _unhandled_key_input(event):
 	return
 
 func toggle_pause_menu():
+	if %GameOverMenu.visible:
+		return
 	if is_pause_menu_open():
 		close_pause_menu()
 	else:
