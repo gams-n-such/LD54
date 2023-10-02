@@ -104,9 +104,20 @@ label_settings = ExtResource("3_ka2ys")
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="ShowSpacesLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Cheat: show spaces
+"
+label_settings = ExtResource("3_ka2ys")
+
+[node name="ShowSpacesCheckBox" type="CheckBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [connection signal="value_changed" from="GridContainer/SpeedSpinBox" to="." method="_on_speed_value_changed"]
 [connection signal="value_changed" from="GridContainer/MaxSpeedSpinBox" to="." method="_on_max_speed_value_changed"]
 [connection signal="value_changed" from="GridContainer/AccelerationSpinBox" to="." method="_on_acceleration_value_changed"]
 [connection signal="value_changed" from="GridContainer/MaxSpacesSpinBox" to="." method="_on_max_spaces_value_changed"]
 [connection signal="value_changed" from="GridContainer/LineWidthSpinBox" to="." method="_on_line_width_value_changed"]
 [connection signal="toggled" from="GridContainer/AllowBreaksCheckBox" to="." method="_on_allow_breaks_toggled"]
+[connection signal="toggled" from="GridContainer/ShowSpacesCheckBox" to="." method="_on_show_spaces_toggled"]

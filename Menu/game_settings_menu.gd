@@ -8,6 +8,7 @@ func _ready():
 	%MaxSpacesSpinBox.set_value_no_signal(Game.max_spaces)
 	%LineWidthSpinBox.set_value_no_signal(Game.line_width)
 	%AllowBreaksCheckBox.set_pressed_no_signal(Game.allow_word_breaks)
+	%ShowSpacesCheckBox.set_pressed_no_signal(Game.enable_space_highlights)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,3 +34,5 @@ func _on_line_width_value_changed(value):
 func _on_allow_breaks_toggled(button_pressed):
 	Game.allow_word_breaks = button_pressed
 
+func _on_show_spaces_toggled(button_pressed):
+	Game.enable_space_highlights = button_pressed
