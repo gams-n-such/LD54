@@ -5,6 +5,7 @@ signal text_finished(success : bool)
 @export var text : String = ""
 
 var curr_line_idx = 0
+var num_tailing_lines : int = 2
 
 func _ready():
 	if text.length() > 0:
@@ -25,6 +26,8 @@ func start_line(line_idx : int, starting_symbols : float):
 	var current_line = %LinesBox.get_child(curr_line_idx)
 	current_line.line_finished.connect(_on_line_ended)
 	current_line.start_line(starting_symbols)
+	if (curr_line_idx >= num_tailing_lines):
+		%LinesBox.get_child(curr_line_idx - num_tailing_lines).begin_shrinking()
 	return
 
 func _on_line_ended(success : bool, excess_symbols : float):

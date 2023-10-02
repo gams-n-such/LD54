@@ -7,8 +7,11 @@ signal line_finished(success : bool, excess_symbols : float)
 var symbols_covered : float = 0
 var next_space_idx : int = 0
 
+var logic_running : bool = false
+var shrinking : bool = false
+var shrinking_speed : float = 20.0
+
 func _init():
-	process_mode = Node.PROCESS_MODE_DISABLED
 	return
 
 func _ready():
@@ -22,11 +25,14 @@ func _ready():
 
 func _process(delta):
 	process_symbols(delta)
+	process_shrinking(delta)
 	update_transforms()
 	update_progress_bar()
 	return
 
 func process_symbols(delta):
+	if !logic_running:
+		return
 	var old_symbols = symbols_covered
 	symbols_covered += delta * Game.caret_speed
 	
@@ -50,7 +56,7 @@ func process_symbols(delta):
 	return
 
 func update_transforms():
-	custom_minimum_size = $WordsBox.get_combined_minimum_size()
+	custom_minimum_size.x = $WordsBox.get_combined_minimum_size().x
 	%ProgressBar.size = custom_minimum_size
 	return
 	var words = %WordsBox.get_children()
@@ -66,13 +72,27 @@ func update_progress_bar():
 # Flow control
 
 func start_line(initial_symbols : float = 0.0):
+	if logic_running:
+		return
 	if initial_symbols > 0:
 		symbols_covered = initial_symbols
-	process_mode = Node.PROCESS_MODE_PAUSABLE
+	logic_running = true
 	return
 
 func stop_line():
-	process_mode = Node.PROCESS_MODE_DISABLED
+	logic_running = false
+	return
+
+# Shrinking
+
+func begin_shrinking():
+	clear_line()
+	shrinking = true
+
+func process_shrinking(delta):
+	if !shrinking:
+		return
+	custom_minimum_size.y -= delta * shrinking_speed
 	return
 
 # Generation
