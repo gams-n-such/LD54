@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctkolk8qmdc4l"]
+
+[ext_resource type="Texture2D" uid="uid://dn28ah8dwd1eu" path="res://Assets/spacebar_icon.png" id="1_0w2rm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7p1tw"]
+font_size = 42
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="logo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reader's block"
+label_settings = SubResource("LabelSettings_7p1tw")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="SpacebarIcon" type="Sprite2D" parent="."]
+position = Vector2(187, 420)
+texture = ExtResource("1_0w2rm")
