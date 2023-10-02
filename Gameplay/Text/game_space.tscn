@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://hfrul0425lu0"]
+
+[ext_resource type="Theme" uid="uid://b7j234u3kiqnf" path="res://Gameplay/Resources/game_text_theme.tres" id="1_7git3"]
+[ext_resource type="Script" path="res://Gameplay/Text/game_space.gd" id="1_7n5uu"]
+[ext_resource type="LabelSettings" uid="uid://bu25u38x2ycb0" path="res://Gameplay/Resources/game_text_label_settings.tres" id="2_ky67t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfg1y"]
+bg_color = Color(1, 1, 1, 0.25098)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_7n5uu")
+
+[node name="SpaceText" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 5.0
+offset_bottom = 26.0
+mouse_filter = 0
+theme = ExtResource("1_7git3")
+text = " "
+label_settings = ExtResource("2_ky67t")
+
+[node name="SpaceButton" type="Button" parent="SpaceText"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 40)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+clip_text = true
+
+[node name="SpaceVisual" type="Panel" parent="SpaceText/SpaceButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xfg1y")
+
+[connection signal="pressed" from="SpaceText/SpaceButton" to="." method="_on_space_button_pressed"]
