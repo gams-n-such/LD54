@@ -8,6 +8,9 @@ func _ready():
 	%DebugVisual.visible = Game.enable_space_highlights
 	return
 
+func _exit_tree():
+	try_disable()
+	return
 
 func _on_space_button_pressed():
 	toggle_space()
@@ -23,17 +26,34 @@ func get_enabled() -> bool:
 func set_enabled(new_enabled):
 	if enabled == new_enabled:
 		return
-	if new_enabled and Game.can_place_space():
-		Game.current_spaces += 1
-		enabled = new_enabled
-	elif !new_enabled:
-		Game.current_spaces -= 1
-		enabled = new_enabled
+	
+	var success = false
+	if new_enabled:
+		success = try_enable()
 	else:
-		return
-	update_visual()
-	play_sound()
+		success = try_disable()
+	
+	if success:
+		enabled = new_enabled
+		update_visual()
+		play_sound()
+	
 	return
+
+func try_enable() -> bool:
+	if enabled:
+		return false
+	if Game.can_place_space():
+		Game.current_spaces += 1
+		return true
+	else:
+		return false
+
+func try_disable() -> bool:
+	if !enabled:
+		return false
+	Game.current_spaces -= 1
+	return true
 
 func update_visual():
 	if enabled:
