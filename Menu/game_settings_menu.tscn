@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsixb74jvrnup"]
+
+[ext_resource type="Script" path="res://Menu/game_settings_menu.gd" id="1_nm023"]
+
+[node name="GameSettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nm023")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="SpeedLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+tooltip_text = "Main difficulty setting
+"
+mouse_filter = 0
+text = "Caret Speed"
+
+[node name="SpeedSpinBox" type="SpinBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 300.0
+select_all_on_focus = true
+
+[node name="MaxSpacesLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Max spaces
+"
+
+[node name="MaxSpacesSpinBox" type="SpinBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="LineWidthLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Line width
+"
+
+[node name="LineWidthSpinBox" type="SpinBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+
+[node name="AllowBreaksLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Allow word breaks?
+"
+
+[node name="AllowBreaksCheckBox" type="CheckBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="value_changed" from="GridContainer/SpeedSpinBox" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="GridContainer/MaxSpacesSpinBox" to="." method="_on_max_spaces_value_changed"]
+[connection signal="value_changed" from="GridContainer/LineWidthSpinBox" to="." method="_on_line_width_value_changed"]
+[connection signal="toggled" from="GridContainer/AllowBreaksCheckBox" to="." method="_on_allow_breaks_toggled"]
