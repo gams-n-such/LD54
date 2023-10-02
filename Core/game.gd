@@ -1,6 +1,8 @@
 extends Node
 
-var caret_speed : float = 2.0
+var caret_starting_speed : float = 2.0
+var caret_acceleration : float = 0.0
+var caret_max_speed : float = 2.0
 var max_spaces : int = 5
 var line_width : int = 20
 var allow_word_breaks : bool = true
@@ -17,6 +19,7 @@ var game_text : String
 @onready var space_scene : PackedScene = load("res://Gameplay/Text/game_space.tscn")
 
 var current_spaces : int = 0
+var caret_speed : float = 2.0
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -35,6 +38,7 @@ func restart_level():
 
 func reset_state():
 	current_spaces = 0
+	caret_speed = caret_starting_speed
 
 # Settings
 
@@ -42,7 +46,9 @@ func apply_preset(preset : GameSettings):
 	if preset == null:
 		return
 	
-	caret_speed = preset.caret_speed
+	caret_starting_speed = preset.caret_starting_speed
+	caret_max_speed = preset.caret_max_speed
+	caret_acceleration = preset.caret_acceleration
 	max_spaces = preset.max_spaces
 	line_width = preset.line_width
 	allow_word_breaks = preset.allow_word_breaks

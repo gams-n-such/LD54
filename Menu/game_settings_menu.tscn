@@ -30,13 +30,42 @@ layout_mode = 2
 tooltip_text = "Main difficulty setting
 "
 mouse_filter = 0
-text = "Caret Speed"
+text = "Starting Caret Speed"
 label_settings = ExtResource("3_ka2ys")
 
 [node name="SpeedSpinBox" type="SpinBox" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 300.0
+select_all_on_focus = true
+
+[node name="MaxSpeedLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+tooltip_text = "Main difficulty setting
+"
+mouse_filter = 0
+text = "Max Caret Speed"
+label_settings = ExtResource("3_ka2ys")
+
+[node name="MaxSpeedSpinBox" type="SpinBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 300.0
+select_all_on_focus = true
+
+[node name="AccelerationLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+tooltip_text = "Main difficulty setting
+"
+mouse_filter = 0
+text = "Caret Acceleration"
+label_settings = ExtResource("3_ka2ys")
+
+[node name="AccelerationSpinBox" type="SpinBox" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+step = 0.01
 select_all_on_focus = true
 
 [node name="MaxSpacesLabel" type="Label" parent="GridContainer"]
@@ -76,6 +105,8 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [connection signal="value_changed" from="GridContainer/SpeedSpinBox" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="GridContainer/MaxSpeedSpinBox" to="." method="_on_max_speed_value_changed"]
+[connection signal="value_changed" from="GridContainer/AccelerationSpinBox" to="." method="_on_acceleration_value_changed"]
 [connection signal="value_changed" from="GridContainer/MaxSpacesSpinBox" to="." method="_on_max_spaces_value_changed"]
 [connection signal="value_changed" from="GridContainer/LineWidthSpinBox" to="." method="_on_line_width_value_changed"]
 [connection signal="toggled" from="GridContainer/AllowBreaksCheckBox" to="." method="_on_allow_breaks_toggled"]

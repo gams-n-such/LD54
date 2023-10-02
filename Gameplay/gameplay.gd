@@ -10,8 +10,16 @@ func _ready():
 	return
 
 
-func _process(_delta):
-	pass
+func _process(delta):
+	process_speed(delta)
+	return
+
+func process_speed(delta):
+	if get_tree().paused:
+		return
+	Game.caret_speed += Game.caret_acceleration * delta
+	Game.caret_speed = min(Game.caret_speed, Game.caret_max_speed)
+	return
 
 func _exit_tree():
 	resume_gameplay()
