@@ -77,6 +77,7 @@ func _on_countdown_timer_timeout():
 	resume_gameplay()
 	if !start_flag:
 		start_flag = true
+		await get_tree().create_timer(1.5).timeout
 		%GameText.start_text()
 	return
 
