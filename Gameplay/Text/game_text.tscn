@@ -4,13 +4,13 @@
 
 [node name="GameText" type="Control"]
 process_mode = 1
-custom_minimum_size = Vector2(400, 1000)
+custom_minimum_size = Vector2(0, 1000)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
+offset_left = -176.0
+offset_right = -176.0
 offset_bottom = 1000.0
 grow_horizontal = 2
 mouse_filter = 1

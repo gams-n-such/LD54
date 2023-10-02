@@ -7,11 +7,12 @@ bg_color = Color(0, 0.627451, 0, 1)
 
 [node name="TextLine" type="Control"]
 process_mode = 1
-custom_minimum_size = Vector2(400, 40)
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_right = 400.0
 offset_bottom = 40.0
 grow_horizontal = 2
 mouse_filter = 1
@@ -30,12 +31,11 @@ show_percentage = false
 
 [node name="WordsBox" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
 alignment = 1

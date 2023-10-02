@@ -18,10 +18,17 @@ func _ready():
 		clear_line()
 	return
 
+# Process
+
 func _process(delta):
+	process_symbols(delta)
+	update_transforms()
+	update_progress_bar()
+	return
+
+func process_symbols(delta):
 	var old_symbols = symbols_covered
 	symbols_covered += delta * Game.caret_speed
-	update_progress_bar()
 	
 	if symbols_covered >= text.length():
 		stop_line()
@@ -40,8 +47,23 @@ func _process(delta):
 		else:
 			stop_line()
 			line_finished.emit(false, 0.0)
-	
 	return
+
+func update_transforms():
+	custom_minimum_size = $WordsBox.get_combined_minimum_size()
+	%ProgressBar.size = custom_minimum_size
+	return
+	var words = %WordsBox.get_children()
+	var min_x = 0
+	for word in words:
+		min_x += word.custom_minimum_size.x
+
+func update_progress_bar():
+	%ProgressBar.max_value = text.length()
+	%ProgressBar.value = symbols_covered
+	return
+
+# Flow control
 
 func start_line(initial_symbols : float = 0.0):
 	if initial_symbols > 0:
@@ -49,14 +71,11 @@ func start_line(initial_symbols : float = 0.0):
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	return
 
-func update_progress_bar():
-	%ProgressBar.max_value = text.length()
-	%ProgressBar.value = symbols_covered
-	return
-
 func stop_line():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	return
+
+# Generation
 
 func fill_from_string(line_text : String):
 	clear_line()
@@ -66,6 +85,7 @@ func fill_from_string(line_text : String):
 		if %WordsBox.get_child_count() > 0:
 			add_space()
 		add_word(word)
+	#update_transforms()
 	return
 
 func fill_from_words(_words):
