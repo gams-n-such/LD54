@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_lv7os")
-caret_speed = 2.0
+caret_speed = 3.0
 max_spaces = 5
 line_width = 30
 allow_word_breaks = true
