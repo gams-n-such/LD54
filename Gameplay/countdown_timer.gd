@@ -15,12 +15,22 @@ func _ready():
 		start()
 	return
 
-func start():
+func start(seconds : int = -1):
+	if seconds > 0:
+		countdown_seconds = seconds
+		
 	if countdown_seconds <= 0:
 		timeout.emit()
 		return
+		
 	countdown_counter = countdown_seconds
+	tick.emit(countdown_counter)
 	begin_next_tick()
+	
+	return
+
+func stop():
+	%TickTimer.stop()
 	return
 
 func begin_next_tick():
