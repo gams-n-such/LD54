@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dghu5fqfwf78"]
+[gd_scene load_steps=3 format=3 uid="uid://dghu5fqfwf78"]
 
 [ext_resource type="Script" path="res://Gameplay/Text/game_line.gd" id="1_utmk5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7qan"]
+bg_color = Color(0, 0.627451, 0, 1)
 
 [node name="TextLine" type="Control"]
 process_mode = 1
@@ -22,6 +25,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_h7qan")
+show_percentage = false
 
 [node name="WordsBox" type="HBoxContainer" parent="."]
 unique_name_in_owner = true

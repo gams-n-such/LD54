@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://4neuynylwq7q"]
+[gd_scene load_steps=8 format=3 uid="uid://4neuynylwq7q"]
 
 [ext_resource type="Script" path="res://Gameplay/gameplay.gd" id="1_gx5na"]
 [ext_resource type="PackedScene" uid="uid://dwwwc2xgdm8ts" path="res://Menu/pause_menu.tscn" id="2_ctq3r"]
 [ext_resource type="PackedScene" uid="uid://dq4u2fdnraeoq" path="res://Gameplay/countdown_timer.tscn" id="2_j8m7y"]
 [ext_resource type="PackedScene" uid="uid://bp8vg0hk7jin0" path="res://Gameplay/Text/game_text.tscn" id="4_0lxqa"]
+[ext_resource type="PackedScene" uid="uid://ba1yw08wey28c" path="res://Menu/game_over_menu.tscn" id="5_me7rx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ps75t"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktrsl"]
+bg_color = Color(0, 0, 0, 0.25098)
 
 [sub_resource type="LabelSettings" id="LabelSettings_lnph4"]
 font_size = 64
@@ -38,6 +40,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="GameOverMenu" parent="." instance=ExtResource("5_me7rx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="CountdownUI" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 process_mode = 2
@@ -48,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ps75t")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktrsl")
 
 [node name="CenterContainer" type="CenterContainer" parent="CountdownUI"]
 layout_mode = 2
@@ -65,4 +72,5 @@ uppercase = true
 
 [connection signal="tick" from="CountdownTimer" to="." method="_on_countdown_timer_tick"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_countdown_timer_timeout"]
+[connection signal="text_finished" from="GameText" to="." method="_on_game_text_finished"]
 [connection signal="resume_requested" from="PauseMenu" to="." method="_on_pause_menu_resume_requested"]

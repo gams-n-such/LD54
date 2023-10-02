@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwwwc2xgdm8ts"]
+[gd_scene load_steps=5 format=3 uid="uid://ba1yw08wey28c"]
 
-[ext_resource type="Theme" uid="uid://duhg55im1ykn4" path="res://Menu/Resources/menu_theme.tres" id="1_fi080"]
-[ext_resource type="Script" path="res://Menu/pause_menu.gd" id="1_iulyo"]
+[ext_resource type="Script" path="res://Menu/game_over_menu.gd" id="1_6e3wn"]
+[ext_resource type="Theme" uid="uid://duhg55im1ykn4" path="res://Menu/Resources/menu_theme.tres" id="1_lrqfd"]
+[ext_resource type="LabelSettings" uid="uid://dddsgnk48myk6" path="res://Menu/Resources/menu_label_settings.tres" id="3_jorhq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nhhh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1uk1"]
 bg_color = Color(0, 0, 0, 0.25098)
 
-[node name="PauseMenu" type="Control"]
+[node name="GameOverMenu" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -15,8 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("1_fi080")
-script = ExtResource("1_iulyo")
+theme = ExtResource("1_lrqfd")
+script = ExtResource("1_6e3wn")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -25,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8nhhh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_w1uk1")
 
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -33,10 +34,12 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="ResultText" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Resume"
+text = "You win!"
+label_settings = ExtResource("3_jorhq")
+horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -48,6 +51,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Return to Menu"
 
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

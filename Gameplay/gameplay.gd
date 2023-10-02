@@ -80,3 +80,18 @@ func _on_countdown_timer_timeout():
 func _on_countdown_timer_tick(seconds_left):
 	%CountdownLabel.text = str(seconds_left)
 	return
+
+# Game over
+
+func _on_game_text_finished(success):
+	open_game_over_menu(success)
+	return
+
+func open_game_over_menu(win : bool):
+	pause_gameplay()
+	stop_countdown()
+	%GameOverMenu.set_result(win)
+	%GameOverMenu.visible = true
+	return
+
+
