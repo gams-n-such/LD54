@@ -33,6 +33,9 @@ func switch_to_gameplay_level():
 func restart_level():
 	get_tree().reload_current_scene()
 
+func reset_state():
+	current_spaces = 0
+
 # Settings
 
 func apply_preset(preset : GameSettings):

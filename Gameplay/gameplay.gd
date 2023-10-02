@@ -3,8 +3,9 @@ extends Control
 var start_flag : bool = false
 
 func _ready():
-	pause_gameplay()
+	Game.reset_state()
 	%GameText.fill_from_text(Game.game_text)
+	pause_gameplay()
 	start_countdown()
 	return
 
