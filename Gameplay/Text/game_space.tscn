@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://hfrul0425lu0"]
+[gd_scene load_steps=7 format=3 uid="uid://hfrul0425lu0"]
 
 [ext_resource type="Theme" uid="uid://b7j234u3kiqnf" path="res://Gameplay/Resources/game_text_theme.tres" id="1_7git3"]
 [ext_resource type="Script" path="res://Gameplay/Text/game_space.gd" id="1_7n5uu"]
 [ext_resource type="LabelSettings" uid="uid://bu25u38x2ycb0" path="res://Gameplay/Resources/game_text_label_settings.tres" id="2_ky67t"]
+[ext_resource type="AudioStream" uid="uid://bwsx2f5f2ey1y" path="res://Assets/SFX/hit_cue.tres" id="4_qcwmo"]
+[ext_resource type="AudioStream" uid="uid://cpfi1g3nvq52l" path="res://Assets/SFX/return_cue.tres" id="5_sm7pg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfg1y"]
 bg_color = Color(1, 1, 1, 0.25098)
@@ -55,5 +57,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfg1y")
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_qcwmo")
+
+[node name="ReturnAudio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_sm7pg")
 
 [connection signal="pressed" from="SpaceText/SpaceButton" to="." method="_on_space_button_pressed"]

@@ -29,7 +29,10 @@ func set_enabled(new_enabled):
 	elif !new_enabled:
 		Game.current_spaces -= 1
 		enabled = new_enabled
+	else:
+		return
 	update_visual()
+	play_sound()
 	return
 
 func update_visual():
@@ -37,4 +40,11 @@ func update_visual():
 		custom_minimum_size = %SpaceText.size
 	else:
 		custom_minimum_size = Vector2.ZERO;
+	return
+
+func play_sound():
+	if enabled:
+		%HitAudio.play()
+	else:
+		%ReturnAudio.play()
 	return

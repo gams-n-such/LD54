@@ -7,6 +7,7 @@ func _ready():
 	%GameText.fill_from_text(Game.game_text)
 	pause_gameplay()
 	start_countdown()
+	%StartAudio.play()
 	return
 
 
@@ -97,6 +98,10 @@ func _on_countdown_timer_tick(seconds_left):
 
 func _on_game_text_finished(success):
 	open_game_over_menu(success)
+	if success:
+		%WinAudio.play()
+	else:
+		%LooseAudio.play()
 	return
 
 func open_game_over_menu(win : bool):
