@@ -5,7 +5,7 @@ var max_spaces : int = 5
 var line_width : int = 20
 var allow_word_breaks : bool = true
 
-var enable_space_highlights : bool = false
+var enable_space_highlights : bool = true
 
 var game_text : String
 

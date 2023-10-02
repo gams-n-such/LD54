@@ -1,5 +1,6 @@
 extends Control
 
+var start_flag : bool = false
 
 func _ready():
 	pause_gameplay()
@@ -71,6 +72,9 @@ func stop_countdown():
 func _on_countdown_timer_timeout():
 	%CountdownUI.visible = false
 	resume_gameplay()
+	if !start_flag:
+		start_flag = true
+		%GameText.start_text()
 	return
 
 func _on_countdown_timer_tick(seconds_left):

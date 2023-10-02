@@ -1,6 +1,10 @@
 extends Control
 
+signal text_finished(success : bool)
+
 @export var text : String = ""
+
+var curr_line_idx = 0
 
 func _ready():
 	if text.length() > 0:
@@ -12,6 +16,26 @@ func _ready():
 func _process(delta):
 	pass
 
+func start_text():
+	start_line(0, 0.0)
+	return
+
+func start_line(line_idx : int, starting_symbols : float):
+	curr_line_idx = line_idx
+	var current_line = %LinesBox.get_child(curr_line_idx)
+	current_line.line_finished.connect(_on_line_ended)
+	current_line.start_line(starting_symbols)
+	return
+
+func _on_line_ended(success : bool, excess_symbols : float):
+	if not success:
+		text_finished.emit(false)
+		return
+	if curr_line_idx + 1 >= %LinesBox.get_child_count():
+		text_finished.emit(true)
+	else:
+		start_line(curr_line_idx + 1, excess_symbols)
+	return
 
 func fill_from_text(new_text : String):
 	assert(Game.line_width > 0)
