@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwwwc2xgdm8ts"]
+[gd_scene load_steps=5 format=3 uid="uid://dwwwc2xgdm8ts"]
 
 [ext_resource type="Theme" uid="uid://duhg55im1ykn4" path="res://Menu/Resources/menu_theme.tres" id="1_fi080"]
 [ext_resource type="Script" path="res://Menu/pause_menu.gd" id="1_iulyo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nhhh"]
 bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qb1gm"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -30,24 +33,35 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8nhhh")
 [node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qb1gm")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
-[node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
-[node name="MainMenuButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="MainMenuButton" type="Button" parent="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Return to Menu"
 
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
