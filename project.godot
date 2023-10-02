@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Game="*res://Core/game.gd"
 
+[display]
+
+window/size/viewport_width=387
+window/size/viewport_height=700
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
