@@ -7,6 +7,7 @@ func _enter_tree():
 	return
 
 func _ready():
+	%HelpScreen.visible = false
 	%GameTextBox.text = Game.game_text
 	return
 
@@ -17,7 +18,8 @@ func _process(_delta):
 func _on_play_button_pressed():
 	Game.switch_to_gameplay_level()
 
+func _on_help_button_pressed():
+	%HelpScreen.visible = !%HelpScreen.visible
 
 func _on_game_text_changed():
 	Game.game_text = %GameTextBox.text
-	return
