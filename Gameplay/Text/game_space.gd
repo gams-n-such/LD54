@@ -5,7 +5,8 @@ extends Control
 
 
 func _ready():
-	pass # Replace with function body.
+	%DebugVisual.visible = Game.enable_space_highlights
+	return
 
 
 func _on_space_button_pressed():

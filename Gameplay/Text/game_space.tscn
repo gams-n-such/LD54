@@ -15,6 +15,7 @@ script = ExtResource("1_7n5uu")
 
 [node name="SpaceText" type="Label" parent="."]
 unique_name_in_owner = true
+layout_mode = 0
 offset_right = 5.0
 offset_bottom = 26.0
 mouse_filter = 0
@@ -44,6 +45,7 @@ flat = true
 clip_text = true
 
 [node name="DebugVisual" type="Panel" parent="SpaceText/SpaceButton"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

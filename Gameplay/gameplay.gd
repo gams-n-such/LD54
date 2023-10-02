@@ -3,8 +3,7 @@ extends Control
 
 func _ready():
 	pause_gameplay()
-	# Split text into words
-	# Create lines
+	%GameText.fill_from_text(Game.game_text)
 	start_countdown()
 	return
 

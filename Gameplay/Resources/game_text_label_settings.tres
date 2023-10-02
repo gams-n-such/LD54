@@ -1,5 +1,8 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://bu25u38x2ycb0"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bu25u38x2ycb0"]
+
+[ext_resource type="FontFile" uid="uid://oxgftts8n7k5" path="res://Assets/Roboto_Mono/static/RobotoMono-Bold.ttf" id="1_l236r"]
 
 [resource]
+font = ExtResource("1_l236r")
 shadow_size = 0
 shadow_offset = Vector2(0, 0)

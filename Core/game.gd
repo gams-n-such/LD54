@@ -5,10 +5,16 @@ var max_spaces : int = 5
 var line_width : int = 20
 var allow_word_breaks : bool = true
 
+var enable_space_highlights : bool = false
+
 var game_text : String
 
 @onready var menu_scene : PackedScene = load("res://Menu/main_menu.tscn")
 @onready var gameplay_scene : PackedScene = load("res://Gameplay/gameplay.tscn")
+
+@onready var line_scene : PackedScene = load("res://Gameplay/Text/game_line.tscn")
+@onready var word_scene : PackedScene = load("res://Gameplay/Text/game_word.tscn")
+@onready var space_scene : PackedScene = load("res://Gameplay/Text/game_space.tscn")
 
 var current_spaces : int = 0
 
