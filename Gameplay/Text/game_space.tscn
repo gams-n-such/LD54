@@ -7,7 +7,8 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfg1y"]
 bg_color = Color(1, 1, 1, 0.25098)
 
-[node name="Control" type="Control"]
+[node name="GameSpace" type="Control"]
+process_mode = 1
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7n5uu")
@@ -23,6 +24,7 @@ label_settings = ExtResource("2_ky67t")
 
 [node name="SpaceButton" type="Button" parent="SpaceText"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 40)
 layout_mode = 1
 anchors_preset = 15
@@ -30,10 +32,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_constants/h_separation = 0
 flat = true
 clip_text = true
 
-[node name="SpaceVisual" type="Panel" parent="SpaceText/SpaceButton"]
+[node name="DebugVisual" type="Panel" parent="SpaceText/SpaceButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

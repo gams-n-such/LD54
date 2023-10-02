@@ -10,6 +10,8 @@ var game_text : String
 @onready var menu_scene : PackedScene = load("res://Menu/main_menu.tscn")
 @onready var gameplay_scene : PackedScene = load("res://Gameplay/gameplay.tscn")
 
+var current_spaces : int = 0
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	pass # Replace with function body.
@@ -43,3 +45,8 @@ func apply_level_data(level : GameLevel):
 	game_text = level.game_text
 	
 	return
+
+# Rules
+
+func can_place_space() -> bool:
+	return current_spaces < max_spaces
