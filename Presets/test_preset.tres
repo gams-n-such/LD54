@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GamePreset" load_steps=2 format=3 uid="uid://bqvyd0gsmmwca"]
 
-[ext_resource type="Script" path="res://Core/game_preset.gd" id="1_lv7os"]
+[ext_resource type="Script" path="res://Core/game_settings.gd" id="1_lv7os"]
 
 [resource]
 script = ExtResource("1_lv7os")
