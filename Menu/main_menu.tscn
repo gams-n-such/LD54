@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1hylbuh552x0"]
+[gd_scene load_steps=6 format=3 uid="uid://c1hylbuh552x0"]
 
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="1_lpju7"]
 [ext_resource type="PackedScene" uid="uid://bsixb74jvrnup" path="res://Menu/game_settings_menu.tscn" id="1_vgoms"]
+[ext_resource type="Resource" uid="uid://ccr4wk627gnca" path="res://Presets/test_level.tres" id="2_b128j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ama4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_63w3l"]
+font_size = 64
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,30 +20,64 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lpju7")
-
-[node name="GameSettingsMenu" parent="." instance=ExtResource("1_vgoms")]
-layout_mode = 1
-offset_left = 206.0
-offset_top = 50.0
-offset_right = -103.0
-offset_bottom = -56.0
+default_level = ExtResource("2_b128j")
 
 [node name="PlayButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -252.0
-offset_top = -98.0
-offset_right = -2.00024
-offset_bottom = 2.0
-grow_horizontal = 0
+offset_top = -100.0
+offset_right = 250.0
 grow_vertical = 0
 pivot_offset = Vector2(250, 100)
 text = "Play
 "
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2ama4")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reader's block"
+label_settings = SubResource("LabelSettings_63w3l")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GameSettingsMenu" parent="." instance=ExtResource("1_vgoms")]
+layout_mode = 2
+anchors_preset = 0
+anchor_top = 0.154
+anchor_right = 0.304
+offset_top = 0.207993
+offset_right = -0.208008
+size_flags_vertical = 12
+size_flags_stretch_ratio = 0.5
+
+[node name="GameTextBox" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.304
+anchor_top = 0.156
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.208008
+offset_top = 0.911995
+grow_horizontal = 2
+grow_vertical = 2
+wrap_mode = 1
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="text_changed" from="GameTextBox" to="." method="_on_game_text_changed"]
