@@ -34,7 +34,7 @@ func _on_line_ended(success : bool, excess_symbols : float):
 	if not success:
 		text_finished.emit(false)
 		return
-	if curr_line_idx + 1 >= %LinesBox.get_child_count():
+	if curr_line_idx + 1 >= $LinesBox.get_child_count():
 		text_finished.emit(true)
 	else:
 		start_line(curr_line_idx + 1, excess_symbols)

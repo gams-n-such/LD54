@@ -2,6 +2,7 @@ extends Control
 
 
 func _ready():
+	$GridContainer/SpeedSpinBox.set_value_no_signal(Game.caret_starting_speed)
 	%SpeedSpinBox.set_value_no_signal(Game.caret_starting_speed)
 	%MaxSpeedSpinBox.set_value_no_signal(Game.caret_max_speed)
 	%AccelerationSpinBox.set_value_no_signal(Game.caret_acceleration)
